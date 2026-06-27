@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+    Content-Security-Policy:
+    When deploying to a real server, add this as an HTTP header (not a meta tag)
+    for full protection. The nonce approach is recommended for inline scripts.
+    Example header value:
+      Content-Security-Policy:
+        default-src 'none';
+        script-src 'self';
+        style-src 'self' https://fonts.googleapis.com;
+        font-src https://fonts.gstatic.com;
+        img-src 'self' data:;
+        connect-src 'none';
+        frame-ancestors 'none';
+  -->
+
+  <meta name="description" content="Publish My Assets Music — music splits tracker, ISRC registry, platform directory, and LLC registration roadmap for independent artists." />
+  <meta name="theme-color" content="#0D0D0D" />
+
+  <title>Publish My Assets Music</title>
+
+  <!-- Fonts — preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ── App Header ─────────────────────────────────────────── -->
+  <header class="app-header" role="banner">
+    <div class="app-header__inner">
+      <div class="app-header__brand">
+        <div class="app-header__brand-name">♪ Publish My Assets Music</div>
+        <div class="app-header__brand-sub">Publishing, Rights &amp; Distribution</div>
+      </div>
+      <!-- Stats injected by JS -->
+      <div class="app-header__stats" id="header-stats" aria-label="Catalog statistics"></div>
+    </div>
+  </header>
+
+  <!-- ── Tab Bar ────────────────────────────────────────────── -->
+  <nav class="tab-bar" aria-label="Application sections">
+    <div class="tab-bar__inner" id="tab-bar" role="tablist"></div>
+  </nav>
+
+  <!-- ── Main Content ──────────────────────────────────────── -->
+  <main>
+    <div class="page" id="tab-panels"></div>
+  </main>
+
+  <!-- app.js is type=module: deferred, scoped, no global pollution -->
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
