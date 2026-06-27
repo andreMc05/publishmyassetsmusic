@@ -1,0 +1,123 @@
+/* ═══════════════════════════════════════════════════════════════
+   App Shell — Header
+═══════════════════════════════════════════════════════════════ */
+.app-header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 18px var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.app-header__brand-name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-2xl);
+  color: var(--color-gold);
+  letter-spacing: -0.03em;
+}
+
+.app-header__brand-sub {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  margin-top: 2px;
+}
+
+.app-header__stats {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-2xl);
+  line-height: 1.1;
+}
+
+.stat__label {
+  color: var(--color-muted);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  margin-top: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Tab Bar
+═══════════════════════════════════════════════════════════════ */
+.tab-bar {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  overflow-x: auto;
+  position: sticky;
+  top: var(--header-height);
+  z-index: 90;
+}
+
+.tab-bar::-webkit-scrollbar { height: 0; }
+
+.tab-bar__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  min-width: max-content;
+}
+
+.tab-btn {
+  padding: 14px 22px;
+  font-family: var(--font-display);
+  font-weight: var(--weight-semi);
+  font-size: var(--text-base);
+  color: var(--color-muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tab-btn:hover { color: var(--color-text); }
+
+.tab-btn.active {
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Page Content
+═══════════════════════════════════════════════════════════════ */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-6);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }

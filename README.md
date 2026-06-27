@@ -52,11 +52,29 @@ python3 -m http.server 3000
 ## Project Structure
 
 ```
-├── index.html              # App shell and layout
-├── app.js                  # Application logic (tabs, forms, state)
-├── styles.css              # Design tokens and component styles
-├── music-splits-tracker.jsx # React reference implementation
-└── package.json            # Dev server script
+├── index.html
+├── styles.css              # CSS entry — imports all partials
+├── css/
+│   ├── tokens.css          # Design tokens (colors, spacing, typography)
+│   ├── base.css            # Reset and global element styles
+│   ├── utilities.css       # Layout utility classes
+│   ├── buttons.css         # Button system
+│   ├── forms.css           # Form fields and validation
+│   ├── card.css            # Shared card styles
+│   ├── layout.css          # Header, tabs, page shell
+│   ├── splits.css          # Splits tracker components
+│   ├── isrc.css            # ISRC registry components
+│   ├── platforms.css       # Platform directory
+│   └── guide.css           # Registration guide
+├── js/
+│   ├── main.js             # App entry point
+│   ├── state.js            # Reducer, dispatch, localStorage
+│   ├── constants/          # Static data (roles, platforms, guide steps)
+│   ├── utils/              # DOM helpers and ISRC validation
+│   ├── components/         # Reusable UI (forms, cards, split bar)
+│   ├── tabs/               # Tab panel mount functions
+│   └── shell/              # Header stats and tab router
+└── music-splits-tracker.jsx # React reference implementation
 ```
 
 ## License

@@ -1,0 +1,36 @@
+/* ═══════════════════════════════════════════════════════════════
+   Card
+═══════════════════════════════════════════════════════════════ */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+}
+
+.card-sm {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+}
+
+.card-dashed {
+  background: var(--color-card);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-12);
+  text-align: center;
+}
+
+.card-dashed .empty-icon {
+  font-size: 38px;
+  margin-bottom: var(--space-3);
+  display: block;
+}
+
+.card-dashed .empty-text {
+  color: var(--color-muted);
+  font-size: var(--text-md);
+  margin-bottom: var(--space-4);
+}

@@ -1,0 +1,61 @@
+/* ═══════════════════════════════════════════════════════════════
+   Button System
+═══════════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-base);
+  border-radius: var(--radius-lg);
+  padding: 10px 20px;
+  transition: opacity var(--transition-fast), filter var(--transition-fast);
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover  { filter: brightness(1.1); }
+.btn:active { filter: brightness(0.9); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--color-gold);
+  color: #0D0D0D;
+}
+
+.btn-primary-pink {
+  background: var(--color-pink);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-weight: var(--weight-normal);
+}
+
+.btn-ghost:hover { border-color: var(--color-muted); color: var(--color-text); filter: none; }
+
+.btn-sm {
+  font-size: var(--text-sm);
+  padding: 5px 12px;
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-semi);
+}
+
+.btn-xs {
+  font-size: var(--text-sm);
+  padding: 4px 10px;
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-semi);
+}
+
+.btn-icon-blue  { background: rgba(91,127,166,.12); border: 1px solid rgba(91,127,166,.25); color: var(--color-blue); font-weight: var(--weight-semi); }
+.btn-icon-red   { background: rgba(207,102,121,.12); border: 1px solid rgba(207,102,121,.25); color: var(--color-red); font-weight: var(--weight-semi); }
+.btn-icon-pink  { background: rgba(240,98,146,.15); border: 1px solid rgba(240,98,146,.3); color: var(--color-pink); font-weight: var(--weight-semi); }
+.btn-icon-gold  { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.3); color: var(--color-gold); font-weight: var(--weight-semi); }
+.btn-icon-blue2 { background: rgba(91,127,166,.15); border: 1px solid rgba(91,127,166,.3); color: var(--color-blue); font-weight: var(--weight-semi); }
