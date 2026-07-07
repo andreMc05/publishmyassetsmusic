@@ -1,10 +1,18 @@
 import { ROLES } from '../constants/catalog.js';
+import { defaultAssetFolder, defaultLifecycleFields, enrichTrackLifecycle } from '../services/lifecycle.js';
 import { el, uuid } from '../utils/dom.js';
+import { mountLifecycleFields, createEmptyLifecycleState } from './lifecycle-form.js';
 import { renderSplitBar } from './split-bar.js';
 
 export function mountTrackForm(container, initial, onSave, onCancel) {
   container.innerHTML = '';
   let splits = initial?.splits ? structuredClone(initial.splits) : [{ id: uuid(), name: '', role: 'Artist', pct: 0 }];
+  let lifecycleState = initial
+    ? {
+        assetFolder: { ...defaultAssetFolder(), ...initial.assetFolder },
+        lifecycle: { ...defaultLifecycleFields(), ...initial.lifecycle },
+      }
+    : createEmptyLifecycleState();
 
   const card = el('div', 'card splits-form');
 
@@ -53,6 +61,23 @@ export function mountTrackForm(container, initial, onSave, onCancel) {
   // Split rows container
   const rowsContainer = el('div');
   card.appendChild(rowsContainer);
+
+  const lifecycleWrap = el('div');
+  card.appendChild(lifecycleWrap);
+
+  function renderLifecycleSection() {
+    lifecycleWrap.innerHTML = '';
+    mountLifecycleFields(lifecycleWrap, {
+      assetFolder: lifecycleState.assetFolder,
+      lifecycle: lifecycleState.lifecycle,
+    }, patch => {
+      lifecycleState = {
+        assetFolder: { ...lifecycleState.assetFolder, ...patch.assetFolder },
+        lifecycle: { ...lifecycleState.lifecycle, ...patch.lifecycle },
+      };
+    });
+  }
+  renderLifecycleSection();
 
   const errorEl = el('p', 'form-error hidden');
   card.appendChild(errorEl);
@@ -153,13 +178,15 @@ export function mountTrackForm(container, initial, onSave, onCancel) {
     if (splits.some(s => !s.name.trim())) { errorEl.textContent = 'All split holders need a name.'; errorEl.classList.remove('hidden'); return; }
     if (!balanced) { errorEl.textContent = `Splits must add up to 100%. Currently: ${total.toFixed(2)}%`; errorEl.classList.remove('hidden'); return; }
 
-    onSave({
+    onSave(enrichTrackLifecycle({
       id: initial?.id || uuid(),
       title,
       isrc: isrcInput.value.trim(),
       splits: structuredClone(splits),
       createdAt: initial?.createdAt || new Date().toISOString(),
-    });
+      assetFolder: lifecycleState.assetFolder,
+      lifecycle: lifecycleState.lifecycle,
+    }));
   });
 
   cancelBtn.addEventListener('click', onCancel);

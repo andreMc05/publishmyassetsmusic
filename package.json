@@ -5,6 +5,8 @@
   "description": "Music splits tracker, ISRC registry, and distribution guide for independent artists",
   "scripts": {
     "start": "npx --yes serve . -p 3000",
-    "dev": "npm start"
+    "dev": "npm start",
+    "server": "npm --prefix server run dev",
+    "server:start": "npm --prefix server start"
   }
 }

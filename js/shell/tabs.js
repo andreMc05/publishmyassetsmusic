@@ -4,10 +4,12 @@ import { mountTrackerTab } from '../tabs/tracker.js';
 import { mountISRCTab } from '../tabs/isrc.js';
 import { mountPlatformsTab } from '../tabs/platforms.js';
 import { mountGuideTab } from '../tabs/guide.js';
+import { mountCatalogHealthTab } from '../tabs/catalog-health.js';
 
 export function initTabs() {
   const tabs = [
     { id: 'tracker',   label: 'Splits Tracker',     mount: mountTrackerTab },
+    { id: 'catalog',   label: 'Asset Health',       mount: mountCatalogHealthTab },
     { id: 'isrc',      label: '🔢 ISRC Registry',    mount: mountISRCTab },
     { id: 'platforms', label: 'Promote & Stream',   mount: mountPlatformsTab },
     { id: 'guide',     label: 'Registration Guide', mount: mountGuideTab },
@@ -39,8 +41,9 @@ export function initTabs() {
     }
   });
 
-  // Dynamic mounts (tracker & isrc react to state)
+  // Dynamic mounts (tracker, catalog & isrc react to state)
   mountTrackerTab(document.getElementById('panel-tracker'));
+  mountCatalogHealthTab(document.getElementById('panel-catalog'));
   mountISRCTab(document.getElementById('panel-isrc'));
 
   // Tab switching
